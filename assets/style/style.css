@@ -1,0 +1,17 @@
+button {
+    text-align: center;
+    color: blue;
+    font-style: italic;
+    padding: 5px;
+    font-weight: bold;
+}
+
+body {
+    background-color: wheat;
+}
+
+#topics-form {
+    text-align: center;
+    font-size: 18px;
+    color: black;
+}
