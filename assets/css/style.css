@@ -15,3 +15,8 @@ body {
     font-size: 18px;
     color: black;
 }
+
+.topic-btn {
+    background-color: bisque;
+    margin: 5px;
+}

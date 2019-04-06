@@ -13,30 +13,32 @@ function renderButtons() {
         for (var ctr = 0; ctr < topics.length; ctr++) {
 
                 //generating buttons for each gif in the array
-                var b = $("<button>");
-                console.log(b);
+                var gifButton = $("<button>");
+                console.log(gifButton);
                 // Adding a class of topic-btn to our button
-                // b.addClasss("topic-btn");
+                gifButton.addClass('topic-btn');
                 // Adding a data-attribute
-                b.attr("data-name", topics[ctr]);
+                gifButton.attr("data-name", topics[ctr]);
                 // Providing the initial button text
-                b.text(topics[ctr]);
+                gifButton.text(topics[ctr]);
                 // Adding the button to the buttons-view div
-                $("#buttons-view").append(b);
+                $("#buttons-view").append(gifButton);
         }
 }
 // displayGifs function display content
 function displayGifs() {
 
         var animal = $(this).attr("data-name");
+        console.log("Animal: ", animal);
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=Yjmtlr74t0eM9ru2pOIr02HchgPTe5A5&limit=10";
 
         //creating the ajax call for the specific animal button being clicked 
+        console.log(queryURL);
         $.ajax({
                 url: queryURL,
                 method: "GET"
         }).then(function (response) {
-
+                // console.log(JSON.stringify(response))
                 // storing the response in a variable
                 var results = response.data;
 
@@ -50,10 +52,10 @@ function displayGifs() {
                         var pOne = $("<p>").text("Rating: " + results[i].rating);
 
                         // Retrieving the URL for the image
-                        var imgURL = response.Poster;
+                        var imgURL = results[i].images.fixed_height_still.url;
 
                         // Creating an element to hold the image
-                        var image = $("<img>").attr("src", imgURL, results[i]);
+                        var image = $("<img>").attr("src", imgURL,)
 
                         //appending the rating and image to the animalDiv
                         animalDiv.append(pOne);
